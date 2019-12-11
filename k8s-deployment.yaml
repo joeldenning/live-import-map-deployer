@@ -1,0 +1,42 @@
+---
+  apiVersion: "apps/v1"
+  kind: "Deployment"
+  metadata:
+    name: "live-import-map-deployer"
+    namespace: "default"
+    labels:
+      app: "live-import-map-deployer"
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: "live-import-map-deployer"
+    template:
+      metadata:
+        labels:
+          app: "live-import-map-deployer"
+      spec:
+        containers:
+        - name: "live-import-map-deployer-sha256"
+          image: "us.gcr.io/neural-passkey-248222/live-import-map-deployer@sha256:3e243d585360e81a347c9299a075dddea7450cd7520a0d876908c1034204742f"
+  ---
+  apiVersion: "autoscaling/v2beta1"
+  kind: "HorizontalPodAutoscaler"
+  metadata:
+    name: "live-import-map-deployer-hpa"
+    namespace: "default"
+    labels:
+      app: "live-import-map-deployer"
+  spec:
+    scaleTargetRef:
+      kind: "Deployment"
+      name: "live-import-map-deployer"
+      apiVersion: "apps/v1"
+    minReplicas: 1
+    maxReplicas: 1
+    metrics:
+    - type: "Resource"
+      resource:
+        name: "cpu"
+        targetAverageUtilization: 80
+  
