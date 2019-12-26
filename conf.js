@@ -4,5 +4,6 @@ module.exports = {
   manifestFormat: 'importmap',
   locations: {
     reactMf: 'google://react.microfrontends.app/importmap.json',
+    vueMf: 'google://vue.microfrontends.app/importmap.json',
   }
 };
