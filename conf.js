@@ -8,6 +8,7 @@ module.exports = {
     polyglotMf: 'google://polyglot.microfrontends.app/importmap.json',
     angularMf: 'google://angular.microfrontends.app/importmap.json',
     fitch: 'google://fc.microfrontends.app/fitch.importmap',
-    isomorphicMf: 'google://isomorphic.microfrontends.app/importmap.json'
+    isomorphicMf: 'google://isomorphic.microfrontends.app/importmap.json',
+    mtb: 'google://mtb.microfrontends.app/mtb.importmap'
   }
 };
